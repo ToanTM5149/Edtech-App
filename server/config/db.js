@@ -1,13 +1,6 @@
 const sql = require('mssql');
 require('dotenv').config({ path: __dirname + '/../.env' });
-console.log('Loaded environment variables:', {
-    SQL_USER: process.env.SQL_USER,
-    SQL_PASSWORD: process.env.SQL_PASSWORD,
-    SQL_SERVER: process.env.SQL_SERVER,
-    SQL_DATABASE: process.env.SQL_DATABASE,
-    SQL_PORT: process.env.SQL_PORT
-  }
-);
+
 const logger = require('../ultis/logger');
 
 const config = {

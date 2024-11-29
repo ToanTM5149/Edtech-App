@@ -1,8 +1,8 @@
-const { getAllUsersDb, createUserDb, deleteUserDb } = require('../db/users.db');
+const userService = require('../services/users.service')
 
 const getAllUsers = async (req, res) => {
   try {
-    const users = await getAllUsersDb();
+    const users = await userService.getAllUser();
     res.json(users);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -18,7 +18,7 @@ const createUser = async (req, res) => {
       return res.status(400).json({ error: 'Username, email, and password are required' });
     }
 
-    const newUser = await createUserDb({ username, email, password, full_name });
+    const newUser = await userService.createUser({ username, email, password, full_name });
     console.log("New user created:", newUser);
     
     if (!newUser) {
@@ -35,7 +35,7 @@ const createUser = async (req, res) => {
 const deleteUser = async (req, res) => {
   try {
     const { user_id } = req.params;
-    const deletedUser = await deleteUserDb(user_id);
+    const deletedUser = await userService.deleteUserById(user_id);
     res.json(deletedUser);
   } catch (err) {
     res.status(500).json({ error: err.message });

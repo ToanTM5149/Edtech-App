@@ -1,17 +1,14 @@
-const winston = require('winston');
+// ./ultis/logger.js
+const pino = require("pino");
 
-const logger = winston.createLogger({
-  level: 'info',
-  format: winston.format.combine(
-    winston.format.colorize(),
-    winston.format.timestamp(),
-    winston.format.printf(({ timestamp, level, message }) => {
-      return `${timestamp} [${level}]: ${message}`;
-    })
-  ),
-  transports: [
-    new winston.transports.Console()
-  ]
+const logger = pino({
+  transport: {
+    target: "pino-pretty",
+    options: {
+      colorize: true,
+      level: process.env.NODE_ENV === "production" ? "info" : "debug", 
+    },
+  },
 });
 
-module.exports = logger;
+module.exports.logger = logger;

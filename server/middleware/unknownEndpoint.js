@@ -1,9 +1,8 @@
-// middleware/unknownEndpoint.js
-const logger = require('../utils/logger');
+// ./middleware/unknownEndpoint.js
+const { ErrorHandler } = require("../helpers/error");
 
-const unknownEndpoint = (req, res) => {
-    logger.warn(`Unknown endpoint: ${req.method} ${req.originalUrl}`);
-    res.status(404).send({ error: 'Unknown endpoint' });
+const unknownEndpoint = (req, res, next) => {
+  throw new ErrorHandler(401, "Unknown endpoint");
 };
 
 module.exports = unknownEndpoint;

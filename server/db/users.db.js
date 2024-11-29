@@ -30,7 +30,7 @@ const createUserDb = async ({ username, email, password, full_name = null }) => 
   }
 };
 
-const deleteUserDb = async (user_id) => {
+const deleteUserByIdDb = async (user_id) => {
   const pool = await poolPromise;
   const result = await pool.request()
     .input('user_id', sql.Int, user_id)
@@ -41,5 +41,5 @@ const deleteUserDb = async (user_id) => {
 module.exports = {
   getAllUsersDb,
   createUserDb,
-  deleteUserDb
+  deleteUserByIdDb
 };

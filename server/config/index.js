@@ -1,7 +1,7 @@
 // config/index.js
 const db = require('./db');
-const cosmosClient = require('./cosmos');
-const blobServiceClient = require('./storage');
+const cosmosClient = require('./data_configs/cosmos');
+const blobServiceClient = require('./data_configs/storage');
 
 module.exports = {
     db,

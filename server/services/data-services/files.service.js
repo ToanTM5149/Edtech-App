@@ -1,5 +1,5 @@
 // services/files.service.js
-const { blobServiceClient } = require('../config');
+const { blobServiceClient } = require('../../config');
 const logger = require('../utils/logger');
 
 async function uploadFile(containerName, blobName, data) {
