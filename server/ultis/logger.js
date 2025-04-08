@@ -11,4 +11,4 @@ const logger = pino({
   },
 });
 
-module.exports.logger = logger;
+module.exports = logger;
